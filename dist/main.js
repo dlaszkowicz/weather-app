@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://basic-template/./src/index.js?");
+eval("const apiKey = \"8ca8be2872a54644982153831231712\";\nconst degrees = document.querySelector(\".degrees-info\");\nconst searchForm = document.querySelector(\"form\");\nconst searchBtn = document.querySelector(\".search-btn\");\nconst img = document.querySelector(\"img\");\nconst weatherDescription = document.querySelector(\".weather-description\");\nconst humidity = document.querySelector(\".humidity-percent\");\nconst windSpeed = document.querySelector(\".wind-speed\");\n\nfunction getWeather(value) {\n  fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}`, {\n    mode: \"cors\",\n  })\n    .then(function (response) {\n      return response.json();\n    })\n    .then(function (response) {\n      degrees.innerHTML = `<h1>${response.current.temp_c}&deg;C</h1>`;\n      weatherDescription.textContent = response.current.condition.text;\n      humidity.textContent = response.current.humidity + \"%\";\n      windSpeed.textContent = response.current.wind_kph + \"Km/h\";\n    });\n}\nsearchForm.addEventListener(\"submit\", function (event) {\n  event.preventDefault();\n  const city = document.querySelector(\".city\").value;\n  getWeather(city);\n});\nsearchBtn.addEventListener(\"click\", function (event) {\n  event.preventDefault(); // Prevent the default button click behavior\n  const city = document.querySelector(\".city\").value;\n  getWeather(city);\n});\n\n\n//# sourceURL=webpack://basic-template/./src/index.js?");
 
 /***/ })
 
