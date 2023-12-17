@@ -40,6 +40,56 @@ eval("\n\nmodule.exports = function (i) {\n  return i[1];\n};\n\n//# sourceURL=w
 
 /***/ }),
 
+/***/ "./images/clear.png":
+/*!**************************!*\
+  !*** ./images/clear.png ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"1eb7082e2e6ec7f2d01ec72fb65af591.png\");\n\n//# sourceURL=webpack://basic-template/./images/clear.png?");
+
+/***/ }),
+
+/***/ "./images/cloud.png":
+/*!**************************!*\
+  !*** ./images/cloud.png ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"2da1f66c8b49736bf613cbfdd87460da.png\");\n\n//# sourceURL=webpack://basic-template/./images/cloud.png?");
+
+/***/ }),
+
+/***/ "./images/mist.png":
+/*!*************************!*\
+  !*** ./images/mist.png ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"ef70850ddae3d26bd8a437028b4f709f.png\");\n\n//# sourceURL=webpack://basic-template/./images/mist.png?");
+
+/***/ }),
+
+/***/ "./images/overcast.png":
+/*!*****************************!*\
+  !*** ./images/overcast.png ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"57f2fa5f32d873cc9e8b50a84eb78049.png\");\n\n//# sourceURL=webpack://basic-template/./images/overcast.png?");
+
+/***/ }),
+
+/***/ "./images/rain.png":
+/*!*************************!*\
+  !*** ./images/rain.png ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + \"eea33d8e792f2c8bc059f5e046f4ed1c.png\");\n\n//# sourceURL=webpack://basic-template/./images/rain.png?");
+
+/***/ }),
+
 /***/ "./src/styles.css":
 /*!************************!*\
   !*** ./src/styles.css ***!
@@ -116,7 +166,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/styles.css */ \"./src/styles.css\");\n\n\nconst apiKey = \"8ca8be2872a54644982153831231712\";\nconst degrees = document.querySelector(\".degrees-info\");\nconst searchForm = document.querySelector(\"form\");\nconst searchBtn = document.querySelector(\".search-btn\");\nconst img = document.querySelector(\"img\");\nconst weatherDescription = document.querySelector(\".weather-description\");\nconst humidity = document.querySelector(\".humidity-percent\");\nconst windSpeed = document.querySelector(\".wind-speed\");\nconst weatherInfo = document.querySelector(\".weather-info\");\nconst weatherSubInfo = document.querySelector(\".weather-sub-info\");\nconst weatherContainer = document.querySelector(\".weather-container\");\n\nfunction getWeather(value) {\n  fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}`, {\n    mode: \"cors\",\n  })\n    .then(function (response) {\n      return response.json();\n    })\n    .then(function (response) {\n      degrees.innerHTML = `<h1>${response.current.temp_c}&deg;C</h1>`;\n      weatherDescription.textContent = response.current.condition.text;\n      humidity.textContent = response.current.humidity + \"%\";\n      windSpeed.textContent = response.current.wind_kph + \"Km/h\";\n      if (weatherDescription.textContent === \"Clear\") {\n        img.src = \"../images/clear.png\";\n      } else if (weatherDescription.textContent === \"Mist\") {\n        img.src = \"../images/mist.png\";\n      } else if (weatherDescription.textContent === \"Partly cloudy\") {\n        img.src = \"../images/cloud.png\";\n      } else if (weatherDescription.textContent === \"Overcast\") {\n        img.src = \"../images/overcast.png\";\n      } else if (\n        weatherDescription.textContent === \"Moderate or heavy rain with thunder\"\n      ) {\n        img.src = \"../images/thunder.png\";\n      } else if (\n        weatherDescription.textContent === \"Light rain\" ||\n        weatherDescription.textContent === \"Rain\" ||\n        weatherDescription.textContent === \"Patchy rain possible\"\n      ) {\n        img.src = \"../images/rain.png\";\n      }\n    });\n}\nsearchForm.addEventListener(\"submit\", function (event) {\n  event.preventDefault();\n  const city = document.querySelector(\".city\").value;\n  getWeather(city);\n  weatherInfo.display = \"flex\";\n  weatherSubInfo.display = \"flex\";\n});\n\nfunction delay(ms) {\n  return new Promise((resolve) => setTimeout(resolve, ms));\n}\nsearchBtn.addEventListener(\"click\", async function (event) {\n  event.preventDefault(); // Prevent the default button click behavior\n  const city = document.querySelector(\".city\").value;\n  getWeather(city);\n  await delay(200);\n  weatherInfo.style.display = \"block\";\n  weatherSubInfo.style.display = \"flex\";\n  weatherContainer.style.paddingBottom = \"3rem\";\n  weatherContainer.style.paddingTop = \"2rem\";\n  searchForm.style.paddingBottom = \"1.5rem\";\n});\n\n\n//# sourceURL=webpack://basic-template/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/styles.css */ \"./src/styles.css\");\n/* harmony import */ var _images_clear_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../images/clear.png */ \"./images/clear.png\");\n/* harmony import */ var _images_cloud_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/cloud.png */ \"./images/cloud.png\");\n/* harmony import */ var _images_mist_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../images/mist.png */ \"./images/mist.png\");\n/* harmony import */ var _images_overcast_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../images/overcast.png */ \"./images/overcast.png\");\n/* harmony import */ var _images_rain_png__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../images/rain.png */ \"./images/rain.png\");\n\n\n\n\n\n\n\nconst apiKey = \"8ca8be2872a54644982153831231712\";\nconst degrees = document.querySelector(\".degrees-info\");\nconst searchForm = document.querySelector(\"form\");\nconst searchBtn = document.querySelector(\".search-btn\");\nconst img = document.querySelector(\"img\");\nconst weatherDescription = document.querySelector(\".weather-description\");\nconst humidity = document.querySelector(\".humidity-percent\");\nconst windSpeed = document.querySelector(\".wind-speed\");\nconst weatherInfo = document.querySelector(\".weather-info\");\nconst weatherSubInfo = document.querySelector(\".weather-sub-info\");\nconst weatherContainer = document.querySelector(\".weather-container\");\n\nfunction getWeather(value) {\n  fetch(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}`, {\n    mode: \"cors\",\n  })\n    .then(function (response) {\n      return response.json();\n    })\n    .then(function (response) {\n      degrees.innerHTML = `<h1>${response.current.temp_c}&deg;C</h1>`;\n      weatherDescription.textContent = response.current.condition.text;\n      humidity.textContent = response.current.humidity + \"%\";\n      windSpeed.textContent = response.current.wind_kph + \"Km/h\";\n      if (weatherDescription.textContent === \"Clear\") {\n        img.src = \"../images/clear.png\";\n      } else if (weatherDescription.textContent === \"Mist\") {\n        img.src = \"../images/mist.png\";\n      } else if (weatherDescription.textContent === \"Partly cloudy\") {\n        img.src = \"../images/cloud.png\";\n      } else if (weatherDescription.textContent === \"Overcast\") {\n        img.src = \"../images/overcast.png\";\n      } else if (\n        weatherDescription.textContent === \"Moderate or heavy rain with thunder\"\n      ) {\n        img.src = \"../images/thunder.png\";\n      } else if (\n        weatherDescription.textContent === \"Light rain\" ||\n        weatherDescription.textContent === \"Rain\" ||\n        weatherDescription.textContent === \"Patchy rain possible\"\n      ) {\n        img.src = \"../images/rain.png\";\n      }\n    });\n}\nsearchForm.addEventListener(\"submit\", function (event) {\n  event.preventDefault();\n  const city = document.querySelector(\".city\").value;\n  getWeather(city);\n  weatherInfo.display = \"flex\";\n  weatherSubInfo.display = \"flex\";\n});\n\nfunction delay(ms) {\n  return new Promise((resolve) => setTimeout(resolve, ms));\n}\nsearchBtn.addEventListener(\"click\", async function (event) {\n  event.preventDefault(); // Prevent the default button click behavior\n  const city = document.querySelector(\".city\").value;\n  getWeather(city);\n  await delay(200);\n  weatherInfo.style.display = \"block\";\n  weatherSubInfo.style.display = \"flex\";\n  weatherContainer.style.paddingBottom = \"3rem\";\n  weatherContainer.style.paddingTop = \"2rem\";\n  searchForm.style.paddingBottom = \"1.5rem\";\n});\n\n\n//# sourceURL=webpack://basic-template/./src/index.js?");
 
 /***/ })
 
@@ -171,6 +221,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -185,6 +247,29 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && !scriptUrl) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
