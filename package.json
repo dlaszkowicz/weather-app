@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "http://dlaszkowicz.github.io/weather-app",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --config=webpack.config.js"
+    "build": "webpack --config=webpack.config.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
@@ -13,5 +16,12 @@
   "dependencies": {
     "bootstrap-icons": "^1.11.2",
     "lodash": "^4.17.21"
+  },
+  "repository": {
+    "url": "git+https://github.com/dlaszkowicz/weather-app.git"
+  },
+  "devDependencies": {
+    "css-loader": "^6.8.1",
+    "gh-pages": "^6.1.0"
   }
 }
