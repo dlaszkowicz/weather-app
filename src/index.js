@@ -36,7 +36,8 @@ function getWeather(value) {
         img.src = "../images/thunder.png";
       } else if (
         weatherDescription.textContent === "Light rain" ||
-        weatherDescription.textContent === "Rain"
+        weatherDescription.textContent === "Rain" ||
+        weatherDescription.textContent === "Patchy rain possible"
       ) {
         img.src = "../images/rain.png";
       }
@@ -49,10 +50,15 @@ searchForm.addEventListener("submit", function (event) {
   weatherInfo.display = "flex";
   weatherSubInfo.display = "flex";
 });
-searchBtn.addEventListener("click", function (event) {
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+searchBtn.addEventListener("click", async function (event) {
   event.preventDefault(); // Prevent the default button click behavior
   const city = document.querySelector(".city").value;
   getWeather(city);
+  await delay(200);
   weatherInfo.style.display = "block";
   weatherSubInfo.style.display = "flex";
   weatherContainer.style.paddingBottom = "3rem";
