@@ -55,6 +55,8 @@ function getWeather(value) {
       ) {
         img.src = rainImage;
       }
+      weatherInfo.classList.add("animate");
+      weatherSubInfo.classList.add("animate");
     });
 }
 

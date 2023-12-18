@@ -100,3 +100,24 @@ h1 {
 form {
   margin-bottom: 0;
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.weather-info,
+.weather-sub-info {
+  display: none;
+}
+
+.weather-info.animate,
+.weather-sub-info.animate {
+  animation: fadeIn 1s ease-out;
+  display: flex;
+}
