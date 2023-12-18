@@ -1,3 +1,10 @@
+import "../src/styles.css";
+import clearImage from "../images/clear.png";
+import cloudImage from "../images/cloud.png";
+import mistImage from "../images/mist.png";
+import overcastImage from "../images/overcast.png";
+import rainImage from "../images/rain.png";
+
 const apiKey = "8ca8be2872a54644982153831231712";
 const degrees = document.querySelector(".degrees-info");
 const searchForm = document.querySelector("form");
@@ -22,27 +29,35 @@ function getWeather(value) {
       weatherDescription.textContent = response.current.condition.text;
       humidity.textContent = response.current.humidity + "%";
       windSpeed.textContent = response.current.wind_kph + "Km/h";
+
+      // Update image paths based on the imported variables
       if (weatherDescription.textContent === "Clear") {
-        img.src = "../images/clear.png";
-      } else if (weatherDescription.textContent === "Mist") {
-        img.src = "../images/mist.png";
+        img.src = clearImage;
+      } else if (
+        weatherDescription.textContent === "Mist" ||
+        weatherDescription.textContent === "Fog" ||
+        weatherDescription.textContent === "Freezing Fog"
+      ) {
+        img.src = mistImage;
       } else if (weatherDescription.textContent === "Partly cloudy") {
-        img.src = "../images/cloud.png";
+        img.src = cloudImage;
       } else if (weatherDescription.textContent === "Overcast") {
-        img.src = "../images/overcast.png";
+        img.src = overcastImage;
       } else if (
         weatherDescription.textContent === "Moderate or heavy rain with thunder"
       ) {
+        // Assuming you have a thunder image
         img.src = "../images/thunder.png";
       } else if (
         weatherDescription.textContent === "Light rain" ||
         weatherDescription.textContent === "Rain" ||
         weatherDescription.textContent === "Patchy rain possible"
       ) {
-        img.src = "../images/rain.png";
+        img.src = rainImage;
       }
     });
 }
+
 searchForm.addEventListener("submit", function (event) {
   event.preventDefault();
   const city = document.querySelector(".city").value;
@@ -54,11 +69,11 @@ searchForm.addEventListener("submit", function (event) {
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
 searchBtn.addEventListener("click", async function (event) {
-  event.preventDefault(); // Prevent the default button click behavior
+  event.preventDefault();
   const city = document.querySelector(".city").value;
   getWeather(city);
-  await delay(200);
   weatherInfo.style.display = "block";
   weatherSubInfo.style.display = "flex";
   weatherContainer.style.paddingBottom = "3rem";
